@@ -75,7 +75,6 @@
 			<groupId>net.runeduniverse.tools.runes4tools</groupId>
 			<artifactId>runes4maven-maven-plugin</artifactId>
 			<version>${runes4maven-version}</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<!-- dependency for plexus annotation -->

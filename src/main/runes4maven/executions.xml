@@ -3,27 +3,27 @@
 		<id>default</id>
 		<phases>
 			<phase>
-				<id>builder-preprocessor</id>
+				<id>preprocessor</id>
 				<goals>
-					<goal>c2gcc:preprocess</goal>
+					<goal>preprocess</goal>
 				</goals>
 			</phase>
 			<phase>
-				<id>builder-compiler</id>
+				<id>compiler</id>
 				<goals>
-					<goal>c2gcc:compile</goal>
+					<goal>compile</goal>
 				</goals>
 			</phase>
 			<phase>
-				<id>builder-assembler</id>
+				<id>assembler</id>
 				<goals>
-					<goal>c2gcc:assemble</goal>
+					<goal>assemble</goal>
 				</goals>
 			</phase>
 			<phase>
-				<id>builder-linker</id>
+				<id>linker</id>
 				<goals>
-					<goal>c2gcc:link</goal>
+					<goal>link</goal>
 				</goals>
 			</phase>
 		</phases>
@@ -32,27 +32,27 @@
 		<id>test</id>
 		<phases>
 			<phase>
-				<id>builder-preprocessor</id>
+				<id>preprocessor</id>
 				<goals>
-					<goal>c2gcc:preprocess</goal>
+					<goal>preprocess</goal>
 				</goals>
 			</phase>
 			<phase>
-				<id>builder-compiler</id>
+				<id>compiler</id>
 				<goals>
-					<goal>c2gcc:compile</goal>
+					<goal>compile</goal>
 				</goals>
 			</phase>
 			<phase>
-				<id>builder-assembler</id>
+				<id>assembler</id>
 				<goals>
-					<goal>c2gcc:assemble</goal>
+					<goal>assemble</goal>
 				</goals>
 			</phase>
 			<phase>
-				<id>builder-linker</id>
+				<id>linker</id>
 				<goals>
-					<goal>c2gcc:link</goal>
+					<goal>link</goal>
 				</goals>
 			</phase>
 		</phases>
