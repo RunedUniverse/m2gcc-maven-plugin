@@ -3,7 +3,7 @@ package net.runeduniverse.tools.runes4tools.maven.c2gcc;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
-import net.runeduniverse.tools.runes4tools.maven.runes4maven.lifecycles.builder.mojos.APreprocessorMojo;
+import net.runeduniverse.tools.runes4tools.maven.r4m.lifecycles.builder.mojos.APreprocessorMojo;
 
 /**
  * Assembler for GCC
