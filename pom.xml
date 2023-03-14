@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>net.runeduniverse.tools.runes4tools</groupId>
+	<groupId>net.runeduniverse.tools.maven.cpp2gcc</groupId>
 	<artifactId>c2gcc-maven-plugin</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.0</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>C2GCC Maven Plugin</name>
@@ -55,7 +55,9 @@
 		<!-- VERSIONS -->
 		<maven-version-min>3.3.9</maven-version-min>
 		<maven-version>3.8.5</maven-version>
-		<runes4maven-version>0.0.1</runes4maven-version>
+		<!-- ARTIFACT VERSIONS -->
+		<runeduniverse-mvn-ext-compiler-version>[0.0.0,)</runeduniverse-mvn-ext-compiler-version>
+		
 
 		<plexus-component-version>1.7.1</plexus-component-version>
 	</properties>
@@ -73,9 +75,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>net.runeduniverse.tools.runes4tools</groupId>
-			<artifactId>r4m-maven-plugin</artifactId>
-			<version>${runes4maven-version}</version>
+			<groupId>net.runeduniverse.tools.maven.compiler</groupId>
+			<artifactId>compiler-api</artifactId>
+			<version>${runeduniverse-mvn-ext-compiler-version}</version>
 		</dependency>
 
 		<!-- dependency for plexus annotation -->
