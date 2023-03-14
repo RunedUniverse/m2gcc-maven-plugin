@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>net.runeduniverse.tools.maven.cpp2gcc</groupId>
+	<groupId>net.runeduniverse.tools.maven.c2gcc</groupId>
 	<artifactId>c2gcc-maven-plugin</artifactId>
 	<version>0.0.0</version>
 	<packaging>maven-plugin</packaging>
@@ -56,9 +56,7 @@
 		<maven-version-min>3.3.9</maven-version-min>
 		<maven-version>3.8.5</maven-version>
 		<!-- ARTIFACT VERSIONS -->
-		<runeduniverse-mvn-ext-compiler-version>[0.0.0,)</runeduniverse-mvn-ext-compiler-version>
-		
-
+		<runeduniverse-mvn-ext-compiler-version>0.0.0</runeduniverse-mvn-ext-compiler-version>
 		<plexus-component-version>1.7.1</plexus-component-version>
 	</properties>
 
