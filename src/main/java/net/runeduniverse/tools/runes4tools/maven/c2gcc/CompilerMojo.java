@@ -7,7 +7,7 @@ import net.runeduniverse.tools.maven.compiler.api.mojo.ACompilerMojo;
 
 /**
  * Assembler for GCC
- * @author Pl4yingNight
+ * @author VenaNocta
  *
  * @phase compiler
  * @goal compile

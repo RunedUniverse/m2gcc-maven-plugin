@@ -7,7 +7,7 @@ import net.runeduniverse.tools.maven.compiler.api.mojo.APreprocessorMojo;
 
 /**
  * Assembler for GCC
- * @author Pl4yingNight
+ * @author VenaNocta
  *
  * @phase preprocessor
  * @goal preprocess
