@@ -22,6 +22,7 @@
 		<!-- VERSIONS -->
 		<artifact-version>0</artifact-version>
 		<module-c-version>0</module-c-version>
+		<module-cpp-version>0</module-cpp-version>
 		<!-- ARTIFACT VERSIONS - COMPILER -->
 		<maven-plugin-plugin-version>3.6.4</maven-plugin-plugin-version>
 		<plexus-component-version>1.7.1</plexus-component-version>
@@ -74,6 +75,12 @@
 			<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
 			<artifactId>m2gcc-c-maven-plugin</artifactId>
 			<version>${major-version}.${minor-version}.${module-c-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+			<artifactId>m2gcc-cpp-maven-plugin</artifactId>
+			<version>${major-version}.${minor-version}.${module-cpp-version}</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>

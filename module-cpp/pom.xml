@@ -7,11 +7,11 @@
 		<version>0.0.0</version>
 	</parent>
 
-	<artifactId>m2gcc-c-maven-plugin</artifactId>
+	<artifactId>m2gcc-cpp-maven-plugin</artifactId>
 	<version>${major-version}.${minor-version}.${artifact-version}</version>
 	<packaging>maven-plugin</packaging>
 
-	<name>M2GCC C-Module Maven Plugin</name>
+	<name>M2GCC Cpp-Module Maven Plugin</name>
 	<url>https://github.com/RunedUniverse/m2gcc-maven-plugin</url>
 	<inceptionYear>2022</inceptionYear>
 
@@ -26,8 +26,6 @@
 		<!-- ARTIFACT VERSIONS - COMPILER -->
 		<maven-plugin-plugin-version>3.6.4</maven-plugin-plugin-version>
 		<plexus-component-version>1.7.1</plexus-component-version>
-		<!-- DEBUG -->
-		<maven-version>3.8.5</maven-version>
 	</properties>
 
 	<licenses>
@@ -73,14 +71,6 @@
 	</prerequisites>
 
 	<dependencies>
-		<!-- DEBUG -->
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-core</artifactId>
-			<version>3.8.5</version>
-			<scope>provided</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-plugin-api</artifactId>
@@ -134,7 +124,7 @@
 				<artifactId>maven-plugin-plugin</artifactId>
 				<version>${maven-plugin-plugin-version}</version>
 				<configuration>
-					<goalPrefix>m2gcc-c</goalPrefix>
+					<goalPrefix>m2gcc-cpp</goalPrefix>
 				</configuration>
 			</plugin>
 			<plugin>
