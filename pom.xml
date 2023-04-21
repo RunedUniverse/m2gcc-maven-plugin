@@ -1,14 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>net.runeduniverse.tools.maven.c2gcc</groupId>
-	<artifactId>c2gcc-maven-plugin</artifactId>
+	<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+	<artifactId>m2gcc-parent</artifactId>
 	<version>0.0.0</version>
-	<packaging>maven-plugin</packaging>
+	<packaging>pom</packaging>
 
-	<name>C2GCC Maven Plugin</name>
-	<url>https://github.com/RunedUniverse/c2gcc</url>
+	<name>M2GCC Parent</name>
+	<url>https://github.com/RunedUniverse/m2gcc-maven-plugin</url>
 	<inceptionYear>2022</inceptionYear>
+
+	<modules>
+		<module>sources</module>
+		<module>api</module>
+		<module>module-c</module>
+		<module>bundle</module>
+	</modules>
 
 	<licenses>
 		<license>
@@ -32,96 +39,28 @@
 			<timezone>Europe/Vienna</timezone>
 			<roles>
 				<role>Maintainer</role>
-				<role>Founder</role>
 				<role>Developer</role>
 			</roles>
 		</developer>
 	</developers>
 
 	<scm>
-		<url>https://github.com/RunedUniverse/c2gcc</url>
-		<connection>scm:git:http://github.com/RunedUniverse/c2gcc.git</connection>
-		<developerConnection>scm:git:git@github.com:RunedUniverse/c2gcc.git</developerConnection>
+		<url>https://github.com/RunedUniverse/m2gcc-maven-plugin</url>
+		<connection>scm:git:http://github.com/RunedUniverse/m2gcc-maven-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:RunedUniverse/m2gcc-maven-plugin.git</developerConnection>
 	</scm>
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/RunedUniverse/c2gcc/issues</url>
+		<url>https://github.com/RunedUniverse/m2gcc-maven-plugin/issues</url>
 	</issueManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
 		<!-- VERSIONS -->
-		<maven-version-min>3.3.9</maven-version-min>
-		<maven-version>3.8.5</maven-version>
+		<major-version>0</major-version>
+		<minor-version>0</minor-version>
+		<artifact-version>0</artifact-version>
 		<!-- ARTIFACT VERSIONS -->
-		<runeduniverse-mvn-ext-compiler-version>0.0.0</runeduniverse-mvn-ext-compiler-version>
-		<plexus-component-version>1.7.1</plexus-component-version>
+		<maven-version-min>3.3.9</maven-version-min>
 	</properties>
-
-	<prerequisites>
-		<maven>${maven-version-min}</maven>
-	</prerequisites>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-core</artifactId>
-			<version>${maven-version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>net.runeduniverse.tools.maven.compiler</groupId>
-			<artifactId>compiler-api</artifactId>
-			<version>${runeduniverse-mvn-ext-compiler-version}</version>
-		</dependency>
-
-		<!-- dependency for plexus annotation -->
-		<dependency>
-			<groupId>org.codehaus.plexus</groupId>
-			<artifactId>plexus-component-annotations</artifactId>
-			<version>${plexus-component-version}</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/maven</directory>
-				<targetPath>META-INF/maven</targetPath>
-			</resource>
-			<resource>
-				<directory>src/main/r4m</directory>
-				<targetPath>META-INF/r4m</targetPath>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<artifactId>maven-plugin-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<goalPrefix>c2gcc</goalPrefix>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.plexus</groupId>
-				<artifactId>plexus-component-metadata</artifactId>
-				<version>${plexus-component-version}</version>
-				<configuration>
-					<staticMetadataDirectory>src/main/plexus</staticMetadataDirectory>
-					<testStaticMetadataDirectory>src/test/plexus</testStaticMetadataDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate-metadata</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 </project>
