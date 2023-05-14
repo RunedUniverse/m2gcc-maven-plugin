@@ -13,9 +13,10 @@
 	<modules>
 		<module>sources</module>
 		<module>api</module>
-		<module>module-c</module>
-		<module>module-cpp</module>
-		<module>bundle</module>
+		<module>core</module>
+		<module>m2gcc-maven-plugin</module>
+		<module>m2gcc-c-maven-plugin</module>
+		<module>m2gcc-cpp-maven-plugin</module>
 	</modules>
 
 	<licenses>
@@ -63,5 +64,29 @@
 		<artifact-version>0</artifact-version>
 		<!-- ARTIFACT VERSIONS -->
 		<maven-version-min>3.3.9</maven-version-min>
+		<!-- ARTIFACT VERSIONS - COMPILER -->
+		<maven-plugin-plugin-version>3.6.4</maven-plugin-plugin-version>
+		<plexus-component-version>1.7.1</plexus-component-version>
 	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>${maven-plugin-plugin-version}</version>
+				</plugin>
+				<plugin>
+					<!-- don't add groupId here it bricks inherited version -->
+					<groupId>org.codehaus.plexus</groupId>
+					<artifactId>plexus-component-metadata</artifactId>
+					<version>${plexus-component-version}</version>
+					<configuration>
+						<staticMetadataDirectory>src/main/plexus</staticMetadataDirectory>
+						<testStaticMetadataDirectory>src/test/plexus</testStaticMetadataDirectory>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>

@@ -1,0 +1,10 @@
+<!-- https://maven.apache.org/configure.html#mvn-extensions-xml-file -->
+<extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/EXTENSIONS/1.0.0 http://maven.apache.org/xsd/core-extensions-1.0.0.xsd">
+	<extension>
+		<groupId>net.runeduniverse.tools.maven.r4m</groupId>
+		<artifactId>r4m-maven-extension</artifactId>
+		<version>1.0.0</version>
+	</extension>
+</extensions>

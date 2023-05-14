@@ -31,6 +31,7 @@ A template file can be generated from the already existing project by executing 
 > Additional Help Goals may be accessed by executing: `r4m:help`
 
 **Generate a PEM with only the relevant executions (packaging specific)**
+
 ```bash
 mvn r4m:gen-rel-pem
 ```
@@ -45,3 +46,10 @@ mvn r4m:gen-rel-pem
 + compiler-maven-extension
 + r4m-maven-extension
 
+## Building
+
+Developmet builds are installed using
+
+```bash
+mvn clean dev/+install
+```
