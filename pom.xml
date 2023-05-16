@@ -15,8 +15,10 @@
 		<module>api</module>
 		<module>core</module>
 		<module>m2gcc-maven-plugin</module>
-		<module>m2gcc-c-maven-plugin</module>
-		<module>m2gcc-cpp-maven-plugin</module>
+		<module>m2gcc-preprocessor-maven-plugin</module>
+		<module>m2gcc-compiler-maven-plugin</module>
+		<module>m2gcc-assembler-maven-plugin</module>
+		<module>m2gcc-linker-maven-plugin</module>
 	</modules>
 
 	<licenses>

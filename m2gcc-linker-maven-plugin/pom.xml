@@ -11,7 +11,7 @@
 	<version>${major-version}.${minor-version}.${artifact-version}</version>
 	<packaging>maven-plugin</packaging>
 
-	<name>M2GCC Linker Maven Plugin</name>
+	<name>M2GCC Maven Plugin - Linker</name>
 	<url>https://github.com/RunedUniverse/m2gcc-maven-plugin</url>
 	<inceptionYear>2022</inceptionYear>
 
