@@ -12,6 +12,30 @@
 				<default />
 			</triggers>
 			<lifecycles>
+				<lifecycle id="help">
+					<phases>
+						<phase id="help">
+							<goals>
+								<goal id="help">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+			</lifecycles>
+		</execution>
+
+		<execution source="plugin" id="default">
+			<triggers>
+				<default />
+			</triggers>
+			<lifecycles>
 				<lifecycle id="compiler">
 					<phases>
 						<phase id="preprocessor">
