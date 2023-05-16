@@ -16,9 +16,17 @@
 					<phases>
 						<phase id="preprocessor">
 							<goals>
-								<goal id="preprocess">
+								<goal id="preprocess-c">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-maven-plugin</artifactId>
+									<artifactId>m2gcc-preprocessor-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="preprocess-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-preprocessor-maven-plugin</artifactId>
 									<modes>
 										<default />
 										<dev />
@@ -28,9 +36,17 @@
 						</phase>
 						<phase id="compiler">
 							<goals>
-								<goal id="compile">
+								<goal id="compile-c">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-maven-plugin</artifactId>
+									<artifactId>m2gcc-compiler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="compile-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-compiler-maven-plugin</artifactId>
 									<modes>
 										<default />
 										<dev />
@@ -40,9 +56,17 @@
 						</phase>
 						<phase id="assembler">
 							<goals>
-								<goal id="assemble">
+								<goal id="assemble-c">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-maven-plugin</artifactId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="assemble-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
 									<modes>
 										<default />
 										<dev />
@@ -52,9 +76,17 @@
 						</phase>
 						<phase id="linker">
 							<goals>
-								<goal id="link">
+								<goal id="link-c">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-maven-plugin</artifactId>
+									<artifactId>m2gcc-linker-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="link-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-linker-maven-plugin</artifactId>
 									<modes>
 										<default />
 										<dev />
@@ -73,9 +105,17 @@
 					<phases>
 						<phase id="preprocessor">
 							<goals>
-								<goal id="preprocess">
+								<goal id="preprocess-c">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-maven-plugin</artifactId>
+									<artifactId>m2gcc-preprocessor-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="preprocess-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-preprocessor-maven-plugin</artifactId>
 									<modes>
 										<default />
 										<dev />
@@ -85,9 +125,17 @@
 						</phase>
 						<phase id="compiler">
 							<goals>
-								<goal id="compile">
+								<goal id="compile-c">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-maven-plugin</artifactId>
+									<artifactId>m2gcc-compiler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="compile-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-compiler-maven-plugin</artifactId>
 									<modes>
 										<default />
 										<dev />
@@ -97,9 +145,17 @@
 						</phase>
 						<phase id="assembler">
 							<goals>
-								<goal id="assemble">
+								<goal id="assemble-c">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-maven-plugin</artifactId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="assemble-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
 									<modes>
 										<default />
 										<dev />
@@ -109,9 +165,17 @@
 						</phase>
 						<phase id="linker">
 							<goals>
-								<goal id="link">
+								<goal id="link-c">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-maven-plugin</artifactId>
+									<artifactId>m2gcc-linker-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="link-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-linker-maven-plugin</artifactId>
 									<modes>
 										<default />
 										<dev />

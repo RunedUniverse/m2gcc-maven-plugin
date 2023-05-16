@@ -22,7 +22,10 @@
 		<!-- VERSIONS -->
 		<artifact-version>0</artifact-version>
 		<sources-version>0</sources-version>
-		<core-version>0</core-version>
+		<preprocessor-version>0</preprocessor-version>
+		<compiler-version>0</compiler-version>
+		<assembler-version>0</assembler-version>
+		<linker-version>0</linker-version>
 	</properties>
 
 	<licenses>
@@ -81,8 +84,26 @@
 
 		<dependency>
 			<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-			<artifactId>m2gcc-core</artifactId>
-			<version>${major-version}.${minor-version}.${core-version}</version>
+			<artifactId>m2gcc-preprocessor-maven-plugin</artifactId>
+			<version>${major-version}.${minor-version}.${preprocessor-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+			<artifactId>m2gcc-compiler-maven-plugin</artifactId>
+			<version>${major-version}.${minor-version}.${compiler-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+			<artifactId>m2gcc-assembler-maven-plugin</artifactId>
+			<version>${major-version}.${minor-version}.${assembler-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+			<artifactId>m2gcc-linker-maven-plugin</artifactId>
+			<version>${major-version}.${minor-version}.${linker-version}</version>
 			<scope>compile</scope>
 		</dependency>
 
