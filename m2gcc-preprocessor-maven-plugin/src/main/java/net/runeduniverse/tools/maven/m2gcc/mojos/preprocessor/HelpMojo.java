@@ -3,6 +3,7 @@ package net.runeduniverse.tools.maven.m2gcc.mojos.preprocessor;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.logging.Log;
 
 /**
  * prints the help-page
@@ -18,10 +19,14 @@ public class HelpMojo extends AbstractMojo {
 		getLog().info("");
 		getLog().info("M2GCC Preprocessor Help");
 		getLog().info("");
-		getLog().info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-preprocessor-maven-plugin:preprocess-c");
-		getLog().info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-preprocessor-maven-plugin:preprocess-cpp");
+		printInfo(getLog());
 		getLog().info("");
 		getLog().info("");
+	}
+
+	public static void printInfo(Log log) {
+		log.info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-preprocessor-maven-plugin:preprocess-c");
+		log.info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-preprocessor-maven-plugin:preprocess-cpp");
 	}
 
 }

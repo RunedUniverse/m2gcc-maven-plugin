@@ -21,13 +21,13 @@ public class HelpMojo extends AbstractMojo {
 		getLog().info(" m2gcc:help");
 		getLog().info("     prints this help-page");
 		getLog().info("");
-		getLog().info(" m2gcc:preprocess");
+		net.runeduniverse.tools.maven.m2gcc.mojos.preprocessor.HelpMojo.printInfo(getLog());
 		getLog().info("");
-		getLog().info(" m2gcc:compile");
+		net.runeduniverse.tools.maven.m2gcc.mojos.compiler.HelpMojo.printInfo(getLog());
 		getLog().info("");
-		getLog().info(" m2gcc:assemble");
+		net.runeduniverse.tools.maven.m2gcc.mojos.assembler.HelpMojo.printInfo(getLog());
 		getLog().info("");
-		getLog().info(" m2gcc:link");
+		net.runeduniverse.tools.maven.m2gcc.mojos.linker.HelpMojo.printInfo(getLog());
 		getLog().info("");
 		getLog().info("");
 	}
