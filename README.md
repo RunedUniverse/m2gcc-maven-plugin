@@ -48,8 +48,9 @@ mvn r4m:gen-rel-pem
 
 ## Building
 
-Developmet builds are installed using
+Development-builds are installed using
 
 ```bash
 mvn clean dev/+install
 ```
+

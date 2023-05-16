@@ -1,0 +1,96 @@
+<project-execution-model
+	xmlns="https://api.runeduniverse.net/runes4tools/r4m-pem"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://api.runeduniverse.net/runes4tools/r4m-pem 
+	https://api.runeduniverse.net/runes4tools/r4m-pem-v1_0_0.xsd">
+
+	<modelVersion>1.0.0</modelVersion>
+	<executions>
+
+		<execution source="plugin" id="default">
+			<triggers>
+				<default />
+			</triggers>
+			<lifecycles>
+				<lifecycle id="help">
+					<phases>
+						<phase id="help">
+							<goals>
+								<goal id="help">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+			</lifecycles>
+		</execution>
+
+		<execution source="plugin" id="default">
+			<triggers>
+				<default />
+			</triggers>
+			<lifecycles>
+				<lifecycle id="compiler">
+					<phases>
+						<phase id="assembler">
+							<goals>
+								<goal id="assemble-c">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="assemble-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+			</lifecycles>
+		</execution>
+
+		<execution source="plugin" id="test">
+			<lifecycles>
+				<lifecycle id="compiler">
+					<phases>
+						<phase id="assembler">
+							<goals>
+								<goal id="assemble-c">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+								<goal id="assemble-cpp">
+									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
+									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+			</lifecycles>
+		</execution>
+
+	</executions>
+</project-execution-model>
