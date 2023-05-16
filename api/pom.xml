@@ -61,10 +61,6 @@
 		<url>https://github.com/RunedUniverse/m2gcc-maven-plugin/issues</url>
 	</issueManagement>
 
-	<prerequisites>
-		<maven>${maven-version-min}</maven>
-	</prerequisites>
-
 	<dependencies>
 		<dependency>
 			<groupId>net.runeduniverse.tools.maven.compiler</groupId>

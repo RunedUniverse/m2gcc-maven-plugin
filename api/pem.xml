@@ -1,0 +1,144 @@
+<project-execution-model
+	xmlns="https://api.runeduniverse.net/runes4tools/r4m-pem"
+	xsi:schemaLocation="https://api.runeduniverse.net/runes4tools/r4m-pem https://api.runeduniverse.net/runes4tools/r4m-pem-v1_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>1.0.0</modelVersion>
+
+	<executions>
+		<execution source="override" id="default">
+			<inherited>true</inherited>
+			<restrictions>
+				<packaging-procedure>pom</packaging-procedure>
+				<packaging-procedure>jar</packaging-procedure>
+			</restrictions>
+			<triggers>
+				<default />
+			</triggers>
+			<lifecycles>
+				<lifecycle id="clean">
+					<phases>
+						<phase id="clean">
+							<goals>
+								<goal id="clean">
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-clean-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+				<lifecycle id="default">
+					<phases>
+						<phase id="install">
+							<goals>
+								<goal id="install">
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-install-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+						<phase id="deploy">
+							<goals>
+								<goal id="deploy">
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-deploy-plugin</artifactId>
+									<modes>
+										<default />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+				<lifecycle id="site">
+					<phases>
+						<phase id="site">
+							<goals>
+								<goal id="site">
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-site-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+						<phase id="site-deploy">
+							<goals>
+								<goal id="deploy">
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-site-plugin</artifactId>
+									<modes>
+										<default />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+			</lifecycles>
+		</execution>
+		<execution source="override" id="default">
+			<inherited>true</inherited>
+			<restrictions>
+				<packaging-procedure>jar</packaging-procedure>
+			</restrictions>
+			<triggers>
+				<default />
+			</triggers>
+			<lifecycles>
+				<lifecycle id="default">
+					<phases>
+						<phase id="process-resources">
+							<goals>
+								<goal id="resources">
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-resources-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+						<phase id="compile">
+							<goals>
+								<goal id="compile">
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-compiler-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+						<phase id="process-classes">
+						</phase>
+						<phase id="package">
+							<goals>
+								<goal id="jar">
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-jar-plugin</artifactId>
+									<modes>
+										<default />
+										<dev />
+									</modes>
+								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+			</lifecycles>
+		</execution>
+	</executions>
+</project-execution-model>
