@@ -25,8 +25,8 @@ public class HelpMojo extends AbstractMojo {
 	}
 
 	public static void printInfo(Log log) {
-		log.info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-linker-maven-plugin:link-c");
-		log.info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-linker-maven-plugin:link-cpp");
+		log.info(" m2gcc-linker:link-c");
+		log.info(" m2gcc-linker:link-cpp");
 	}
 
 }

@@ -16,7 +16,7 @@ public class LinkCMojo extends ALinkerMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		getLog().info("m2gcc:link-c");
+		getLog().info("m2gcc-linker:link-c");
 	}
 
 }

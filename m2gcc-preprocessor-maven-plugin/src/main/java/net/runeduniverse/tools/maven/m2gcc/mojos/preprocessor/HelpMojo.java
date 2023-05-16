@@ -25,8 +25,8 @@ public class HelpMojo extends AbstractMojo {
 	}
 
 	public static void printInfo(Log log) {
-		log.info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-preprocessor-maven-plugin:preprocess-c");
-		log.info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-preprocessor-maven-plugin:preprocess-cpp");
+		log.info(" m2gcc-preprocessor:preprocess-c");
+		log.info(" m2gcc-preprocessor:preprocess-cpp");
 	}
 
 }

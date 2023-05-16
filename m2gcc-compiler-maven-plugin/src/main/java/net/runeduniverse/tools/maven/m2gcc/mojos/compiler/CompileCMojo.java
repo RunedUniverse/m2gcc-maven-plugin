@@ -16,7 +16,7 @@ public class CompileCMojo extends ACompilerMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		getLog().info("m2gcc:compile-c");
+		getLog().info("m2gcc-compiler:compile-c");
 	}
 
 }

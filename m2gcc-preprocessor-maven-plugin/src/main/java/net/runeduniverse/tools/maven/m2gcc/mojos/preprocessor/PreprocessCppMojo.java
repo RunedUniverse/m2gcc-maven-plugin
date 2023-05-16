@@ -16,7 +16,7 @@ public class PreprocessCppMojo extends APreprocessorMojo{
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		getLog().info("m2gcc:preprocess-cpp");
+		getLog().info("m2gcc-preprocessor:preprocess-cpp");
 	}
 
 }

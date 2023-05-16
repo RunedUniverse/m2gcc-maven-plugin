@@ -16,7 +16,7 @@ public class AssembleCMojo extends AAssemblerMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		getLog().info("m2gcc:assemble-c");
+		getLog().info("m2gcc-assembler:assemble-c");
 	}
 
 }

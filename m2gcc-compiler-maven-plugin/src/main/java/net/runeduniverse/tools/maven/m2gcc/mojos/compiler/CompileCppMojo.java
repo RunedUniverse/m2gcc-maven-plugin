@@ -16,7 +16,7 @@ public class CompileCppMojo extends ACompilerMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		getLog().info("m2gcc:compile-cpp");
+		getLog().info("m2gcc-compiler:compile-cpp");
 	}
 
 }

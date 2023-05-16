@@ -125,6 +125,9 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-plugin-plugin</artifactId>
+				<configuration>
+					<goalPrefix>m2gcc-assembler</goalPrefix>
+				</configuration>
 			</plugin>
 			<plugin>
 				<!-- don't add groupId here it bricks inherited version -->

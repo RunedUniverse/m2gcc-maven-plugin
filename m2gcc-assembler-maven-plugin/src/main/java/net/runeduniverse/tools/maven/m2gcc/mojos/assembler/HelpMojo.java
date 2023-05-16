@@ -25,8 +25,8 @@ public class HelpMojo extends AbstractMojo {
 	}
 
 	public static void printInfo(Log log) {
-		log.info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-assembler-maven-plugin:assemble-c");
-		log.info(" net.runeduniverse.tools.maven.m2gcc:m2gcc-assembler-maven-plugin:assemble-cpp");
+		log.info(" m2gcc-assembler:assemble-c");
+		log.info(" m2gcc-assembler:assemble-cpp");
 	}
 
 }

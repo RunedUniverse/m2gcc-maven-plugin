@@ -7,6 +7,7 @@ import net.runeduniverse.tools.maven.compiler.api.mojos.ALinkerMojo;
 
 /**
  * Cpp Linker from GCC
+ * 
  * @author VenaNocta
  *
  * @phase linker
@@ -16,7 +17,7 @@ public class LinkCppMojo extends ALinkerMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		getLog().info("m2gcc:link-cpp");
+		getLog().info("m2gcc-linker:link-cpp");
 	}
 
 }

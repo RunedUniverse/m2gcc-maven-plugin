@@ -126,7 +126,7 @@
 			<plugin>
 				<artifactId>maven-plugin-plugin</artifactId>
 				<configuration>
-					<goalPrefix>m2gcc-cpp</goalPrefix>
+					<goalPrefix>m2gcc-compiler</goalPrefix>
 				</configuration>
 			</plugin>
 			<plugin>
