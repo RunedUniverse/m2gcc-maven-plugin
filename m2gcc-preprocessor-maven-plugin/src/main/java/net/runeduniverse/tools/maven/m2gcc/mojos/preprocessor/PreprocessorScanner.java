@@ -15,10 +15,12 @@ public class PreprocessorScanner implements IReferenceScanner {
 	@Requirement
 	private MavenSession mvnSession;
 
+	protected Log log;
 	protected ICompilerRuntime runtime;
 
 	@Override
-	public boolean logInfo(Log log) {
+	public boolean scan() {
+		this.log = CurrentContextUtils.lookupComponent(this.mvnSession, Log.class);
 		this.runtime = CurrentContextUtils.lookupComponent(this.mvnSession, ICompilerRuntime.class);
 
 		log.info("Scanner: Preprocessor  - Hello World!");
