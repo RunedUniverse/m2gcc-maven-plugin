@@ -24,8 +24,8 @@
 		<!-- ARTIFACT VERSIONS -->
 		<maven-version>3.8.5</maven-version>
 		<!-- m2gcc-parent: maven-version-min -->
-		<runeduniverse-utils-common-version>[1.0.1,)</runeduniverse-utils-common-version>
-		<runeduniverse-utils-logging-version>[1.0.1,)</runeduniverse-utils-logging-version>
+		<runeduniverse-utils-common-version>1.0.1</runeduniverse-utils-common-version>
+		<runeduniverse-utils-logging-version>1.0.2</runeduniverse-utils-logging-version>
 		<runeduniverse-mvn-ext-compiler-version>0.0.0</runeduniverse-mvn-ext-compiler-version>
 		<plexus-component-version>1.7.1</plexus-component-version>
 		<!-- ARTIFACT VERSIONS - TESTING -->
