@@ -1,4 +1,4 @@
-package net.runeduniverse.tools.maven.m2gcc.mojos.preprocessor;
+package net.runeduniverse.tools.maven.m2gcc;
 
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.logging.Log;

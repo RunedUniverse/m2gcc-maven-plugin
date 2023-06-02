@@ -20,8 +20,6 @@ public class HelpMojo extends AbstractMojo {
 		getLog().info("");
 		getLog().info(" m2gcc-compiler:compile-c");
 		getLog().info(" m2gcc-compiler:compile-cpp");
-		getLog().info("");
-		getLog().info("");
 	}
 
 }

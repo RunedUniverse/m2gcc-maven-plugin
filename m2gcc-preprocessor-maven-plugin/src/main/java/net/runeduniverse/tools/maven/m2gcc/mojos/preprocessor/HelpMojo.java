@@ -20,8 +20,6 @@ public class HelpMojo extends AbstractMojo {
 		getLog().info("");
 		getLog().info(" m2gcc-preprocessor:preprocess-c");
 		getLog().info(" m2gcc-preprocessor:preprocess-cpp");
-		getLog().info("");
-		getLog().info("");
 	}
 
 }
