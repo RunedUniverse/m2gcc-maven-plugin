@@ -9,8 +9,8 @@ import net.runeduniverse.tools.maven.compiler.api.ICompilerRuntime;
 import net.runeduniverse.tools.maven.compiler.api.IReferenceScanner;
 import net.runeduniverse.tools.maven.compiler.api.mojos.CurrentContextUtils;
 
-@Component(role = IReferenceScanner.class, hint = "m2gcc-preprocessor")
-public class PreprocessorScanner implements IReferenceScanner {
+@Component(role = IReferenceScanner.class, hint = "m2gcc")
+public class ReferenceScanner implements IReferenceScanner {
 
 	@Requirement
 	private MavenSession mvnSession;
