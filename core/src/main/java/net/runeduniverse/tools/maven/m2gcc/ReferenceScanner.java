@@ -12,6 +12,14 @@ import net.runeduniverse.tools.maven.compiler.api.mojos.CurrentContextUtils;
 @Component(role = IReferenceScanner.class, hint = "m2gcc")
 public class ReferenceScanner implements IReferenceScanner {
 
+	// TODO - create pipeline in compiler-maven-extension
+	// TODO - add api to add nodes (filetypes: c,i,ii,...)
+	// TODO - create links between nodes (either in the ref scanner or when the  actual mojo executes)
+	// TODO - in summuary/validation/ScanReferencesMojo check if it's fully linked
+	// TODO - in mojos: 1. validate if compiler-lifecycle is present by optional plexus linking
+	// TODO - in mojos: 2. if compiler-lifecycle is not loaded do the defined step
+	// to all files found in main/target
+
 	@Requirement
 	private MavenSession mvnSession;
 
