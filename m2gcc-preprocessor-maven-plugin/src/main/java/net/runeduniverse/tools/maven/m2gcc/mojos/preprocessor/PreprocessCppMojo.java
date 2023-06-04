@@ -3,7 +3,7 @@ package net.runeduniverse.tools.maven.m2gcc.mojos.preprocessor;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
-import net.runeduniverse.tools.maven.compiler.api.mojos.APreprocessorMojo;
+import net.runeduniverse.tools.maven.compiler.mojos.api.APreprocessorMojo;
 
 /**
  * Cpp Preprocessor from GCC

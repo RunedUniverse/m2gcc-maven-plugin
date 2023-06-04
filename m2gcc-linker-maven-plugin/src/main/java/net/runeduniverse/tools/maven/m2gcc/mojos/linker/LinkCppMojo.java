@@ -3,7 +3,7 @@ package net.runeduniverse.tools.maven.m2gcc.mojos.linker;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
-import net.runeduniverse.tools.maven.compiler.api.mojos.ALinkerMojo;
+import net.runeduniverse.tools.maven.compiler.mojos.api.ALinkerMojo;
 
 /**
  * Cpp Linker from GCC
