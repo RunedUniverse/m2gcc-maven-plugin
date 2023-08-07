@@ -7,7 +7,7 @@ import org.codehaus.plexus.component.annotations.Requirement;
 
 import net.runeduniverse.tools.maven.compiler.api.ICompilerRuntime;
 import net.runeduniverse.tools.maven.compiler.api.IReferenceScanner;
-import net.runeduniverse.tools.maven.compiler.mojos.api.CurrentContextUtils;
+import net.runeduniverse.tools.maven.compiler.mojos.api.SessionContextUtils;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Node;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Pipeline;
 
@@ -44,7 +44,7 @@ public class ReferenceScanner implements IReferenceScanner {
 	private Node compilerObjCpp;
 	private Node compilerFortran;
 	private Node assemblerAssembly;
-	
+
 	protected Log log;
 	protected ICompilerRuntime runtime;
 
@@ -67,7 +67,7 @@ public class ReferenceScanner implements IReferenceScanner {
 		this.compilerFortran = this.pipeline.acquireNode("compiler:fortran");
 
 		this.assemblerAssembly = this.pipeline.acquireNode("assembler:assembly");
-		
+
 		// C source code that must be preprocessed.
 		this.preprocessorC.registerResourceType(this.pipeline.acquireType("c"));
 		// C source code that should not be preprocessed.
@@ -143,11 +143,14 @@ public class ReferenceScanner implements IReferenceScanner {
 
 	@Override
 	public boolean scan() {
-		this.log = CurrentContextUtils.lookupComponent(this.mvnSession, Log.class);
-		this.runtime = CurrentContextUtils.lookupComponent(this.mvnSession, ICompilerRuntime.class);
+		this.log = SessionContextUtils.lookupSessionComponent(this.mvnSession, Log.class);
+		this.runtime = SessionContextUtils.lookupSessionComponent(this.mvnSession, ICompilerRuntime.class);
 
 		log.info("Scanner: Preprocessor  - Hello World!");
 		log.info("scanning src files: " + this.runtime.getSourceDirectory());
+
+		log.info("");
+		log.info("Pipeline: " + this.pipeline.toRecord());
 		// TODO Auto-generated method stub
 		return false;
 	}
