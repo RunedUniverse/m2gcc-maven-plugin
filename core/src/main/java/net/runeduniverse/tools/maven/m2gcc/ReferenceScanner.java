@@ -8,6 +8,7 @@ import org.codehaus.plexus.component.annotations.Requirement;
 import net.runeduniverse.tools.maven.compiler.api.ICompilerRuntime;
 import net.runeduniverse.tools.maven.compiler.api.IReferenceScanner;
 import net.runeduniverse.tools.maven.compiler.mojos.api.CurrentContextUtils;
+import net.runeduniverse.tools.maven.compiler.pipeline.api.Node;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Pipeline;
 
 @Component(role = IReferenceScanner.class, hint = "m2gcc")
@@ -29,76 +30,115 @@ public class ReferenceScanner implements IReferenceScanner {
 	@Requirement
 	private Pipeline pipeline;
 
+	private Node unsupported;
+	private Node preprocessorHeader;
+	private Node preprocessorC;
+	private Node preprocessorCpp;
+	private Node preprocessorObjC;
+	private Node preprocessorObjCpp;
+	private Node preprocessorFortran;
+	private Node preprocessorAssembler;
+	private Node compilerC;
+	private Node compilerCpp;
+	private Node compilerObjC;
+	private Node compilerObjCpp;
+	private Node compilerFortran;
+	private Node assemblerAssembly;
+	
 	protected Log log;
 	protected ICompilerRuntime runtime;
 
 	@Override
 	public void identifyNodes() {
+		this.unsupported = this.pipeline.acquireNode("unsupported");
+
+		this.preprocessorHeader = this.pipeline.acquireNode("preprocessor:header");
+		this.preprocessorC = this.pipeline.acquireNode("preprocessor:c");
+		this.preprocessorCpp = this.pipeline.acquireNode("preprocessor:cpp");
+		this.preprocessorObjC = this.pipeline.acquireNode("preprocessor:objc");
+		this.preprocessorObjCpp = this.pipeline.acquireNode("preprocessor:objcpp");
+		this.preprocessorFortran = this.pipeline.acquireNode("preprocessor:fortran");
+		this.preprocessorAssembler = this.pipeline.acquireNode("preprocessor:assembly");
+
+		this.compilerC = this.pipeline.acquireNode("compiler:c");
+		this.compilerCpp = this.pipeline.acquireNode("compiler:cpp");
+		this.compilerObjC = this.pipeline.acquireNode("compiler:objc");
+		this.compilerObjCpp = this.pipeline.acquireNode("compiler:objcpp");
+		this.compilerFortran = this.pipeline.acquireNode("compiler:fortran");
+
+		this.assemblerAssembly = this.pipeline.acquireNode("assembler:assembly");
+		
 		// C source code that must be preprocessed.
-		this.pipeline.registerNode("c");
+		this.preprocessorC.registerResourceType(this.pipeline.acquireType("c"));
 		// C source code that should not be preprocessed.
-		this.pipeline.registerNode("i");
+		this.compilerC.registerResourceType(this.pipeline.acquireType("i"));
 		// C++ source code that should not be preprocessed.
-		this.pipeline.registerNode("ii");
+		this.compilerCpp.registerResourceType(this.pipeline.acquireType("ii"));
 		// Objective-C source code. Note that you must link with the libobjc library to
 		// make an Objective-C program work.
-		this.pipeline.registerNode("m");
+		this.preprocessorObjC.registerResourceType(this.pipeline.acquireType("m"));
 		// Objective-C source code that should not be preprocessed.
-		this.pipeline.registerNode("mi");
+		this.compilerObjC.registerResourceType(this.pipeline.acquireType("mi"));
 		// Objective-C++ source code. Note that you must link with the libobjc library
 		// to make an Objective-C++ program work. Note that .M refers to a literal
 		// capital M.
-		this.pipeline.registerNodesAsAliases("mm", "M");
+		this.preprocessorObjCpp.registerResourceTypes(this.pipeline.acquireTypes("mm", "M"));
 		// Objective-C++ source code that should not be preprocessed.
-		this.pipeline.registerNode("mii");
+		this.compilerObjCpp.registerResourceType(this.pipeline.acquireType("mii"));
 		// C, C++, Objective-C or Objective-C++ header file to be turned into a
 		// precompiled header (default), or C, C++ header file to be turned into an Ada
 		// spec (via the -fdump-ada-spec switch).
-		this.pipeline.registerNode("h");
+		this.preprocessorHeader.registerResourceType(this.pipeline.acquireType("h"));
 		// C++ source code that must be preprocessed. Note that in .cxx, the last two
 		// letters must both be literally x. Likewise, .C refers to a literal capital C.
-		this.pipeline.registerNodesAsAliases("cc", "cp", "cxx", "cpp", "CPP", "c++", "C");
+		this.preprocessorCpp
+				.registerResourceTypes(this.pipeline.acquireTypes("cc", "cp", "cxx", "cpp", "CPP", "c++", "C"));
 		// Objective-C++ source code that must be preprocessed.
-		this.pipeline.registerNodesAsAliases("mm", "M");
+		this.preprocessorObjCpp.registerResourceTypes(this.pipeline.acquireTypes("mm", "M"));
 		// Objective-C++ source code that should not be preprocessed.
-		this.pipeline.registerNode("mii");
+		this.compilerObjCpp.registerResourceType(this.pipeline.acquireType("mii"));
 		// C++ header file to be turned into a precompiled header or Ada spec.
-		this.pipeline.registerNodesAsAliases("hh", "H", "hp", "hxx", "hpp", "HPP", "h++", "tcc");
+		this.preprocessorHeader
+				.registerResourceTypes(this.pipeline.acquireTypes("hh", "H", "hp", "hxx", "hpp", "HPP", "h++", "tcc"));
 
 		// Fixed form Fortran source code that should not be preprocessed.
-		this.pipeline.registerNodesAsAliases("f", "for", "ftn");
+		this.compilerFortran.registerResourceTypes(this.pipeline.acquireTypes("f", "for", "ftn"));
 		// Fixed form Fortran source code that must be preprocessed (with the
 		// traditional preprocessor).
-		this.pipeline.registerNodesAsAliases("F", "FOR", "fpp", "FPP", "FTN");
+		this.preprocessorFortran.registerResourceTypes(this.pipeline.acquireTypes("F", "FOR", "fpp", "FPP", "FTN"));
 		// Free form Fortran source code that should not be preprocessed.
-		this.pipeline.registerNodesAsAliases("f90", "f95", "f03", "f08");
+		this.compilerFortran.registerResourceTypes(this.pipeline.acquireTypes("f90", "f95", "f03", "f08"));
 		// Free form Fortran source code that must be preprocessed (with the traditional
 		// preprocessor).
-		this.pipeline.registerNodesAsAliases("F90", "F95", "F03", "F08");
+		this.preprocessorFortran.registerResourceTypes(this.pipeline.acquireTypes("F90", "F95", "F03", "F08"));
 
 		// Go source code.
-		this.pipeline.registerNode("go");
+		this.unsupported.registerResourceType(this.pipeline.acquireType("go"));
 
 		// D source code.
-		this.pipeline.registerNode("d");
+		this.unsupported.registerResourceType(this.pipeline.acquireType("d"));
 		// D interface file.
-		this.pipeline.registerNode("di");
+		this.unsupported.registerResourceType(this.pipeline.acquireType("di"));
 		// D documentation code (Ddoc).
-		this.pipeline.registerNode("dd");
+		this.unsupported.registerResourceType(this.pipeline.acquireType("dd"));
 
 		// Ada source code file that contains a library unit declaration (a declaration
 		// of a package, subprogram, or generic, or a generic instantiation), or a
 		// library unit renaming declaration (a package, generic, or subprogram renaming
 		// declaration). Such files are also called specs.
-		this.pipeline.registerNode("ads");
+		this.unsupported.registerResourceType(this.pipeline.acquireType("ads"));
 		// Ada source code file containing a library unit body (a subprogram or package
 		// body). Such files are also called bodies.
-		this.pipeline.registerNode("adb");
+		this.unsupported.registerResourceType(this.pipeline.acquireType("adb"));
 
 		// Assembler code.
-		this.pipeline.registerNode("s");
+		this.preprocessorAssembler.registerResourceType(this.pipeline.acquireType("s"));
+		this.assemblerAssembly.registerResourceType(this.pipeline.acquireType("s"));
 		// Assembler code that must be preprocessed.
-		this.pipeline.registerNodesAsAliases("S", "sx");
+		this.assemblerAssembly.registerResourceTypes(this.pipeline.acquireTypes("S", "sx"));
+
+		/* RESULTS */
+		// precompiled header -> gch
 	}
 
 	@Override
