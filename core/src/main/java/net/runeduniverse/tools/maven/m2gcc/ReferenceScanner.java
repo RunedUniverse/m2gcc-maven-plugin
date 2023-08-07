@@ -1,5 +1,7 @@
 package net.runeduniverse.tools.maven.m2gcc;
 
+import java.io.File;
+
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.component.annotations.Component;
@@ -9,7 +11,9 @@ import net.runeduniverse.tools.maven.compiler.api.ICompilerRuntime;
 import net.runeduniverse.tools.maven.compiler.api.IReferenceScanner;
 import net.runeduniverse.tools.maven.compiler.mojos.api.SessionContextUtils;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Node;
+import net.runeduniverse.tools.maven.compiler.pipeline.api.Phase;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Pipeline;
+import net.runeduniverse.tools.maven.compiler.pipeline.api.ResourceRegistry;
 
 @Component(role = IReferenceScanner.class, hint = "m2gcc")
 public class ReferenceScanner implements IReferenceScanner {
@@ -30,6 +34,9 @@ public class ReferenceScanner implements IReferenceScanner {
 	@Requirement
 	private Pipeline pipeline;
 
+	@Requirement
+	private ResourceRegistry registry;
+	
 	private Node unsupported;
 	private Node preprocessorHeader;
 	private Node preprocessorC;
@@ -50,23 +57,23 @@ public class ReferenceScanner implements IReferenceScanner {
 
 	@Override
 	public void identifyNodes() {
-		this.unsupported = this.pipeline.acquireNode("unsupported");
+		this.unsupported = this.pipeline.acquireNode(null, "unsupported");
 
-		this.preprocessorHeader = this.pipeline.acquireNode("preprocessor:header");
-		this.preprocessorC = this.pipeline.acquireNode("preprocessor:c");
-		this.preprocessorCpp = this.pipeline.acquireNode("preprocessor:cpp");
-		this.preprocessorObjC = this.pipeline.acquireNode("preprocessor:objc");
-		this.preprocessorObjCpp = this.pipeline.acquireNode("preprocessor:objcpp");
-		this.preprocessorFortran = this.pipeline.acquireNode("preprocessor:fortran");
-		this.preprocessorAssembler = this.pipeline.acquireNode("preprocessor:assembly");
+		this.preprocessorHeader = this.pipeline.acquireNode(Phase.PREPROCESSOR, "header");
+		this.preprocessorC = this.pipeline.acquireNode(Phase.PREPROCESSOR, "c");
+		this.preprocessorCpp = this.pipeline.acquireNode(Phase.PREPROCESSOR, "cpp");
+		this.preprocessorObjC = this.pipeline.acquireNode(Phase.PREPROCESSOR, "objc");
+		this.preprocessorObjCpp = this.pipeline.acquireNode(Phase.PREPROCESSOR, "objcpp");
+		this.preprocessorFortran = this.pipeline.acquireNode(Phase.PREPROCESSOR, "fortran");
+		this.preprocessorAssembler = this.pipeline.acquireNode(Phase.PREPROCESSOR, "assembly");
 
-		this.compilerC = this.pipeline.acquireNode("compiler:c");
-		this.compilerCpp = this.pipeline.acquireNode("compiler:cpp");
-		this.compilerObjC = this.pipeline.acquireNode("compiler:objc");
-		this.compilerObjCpp = this.pipeline.acquireNode("compiler:objcpp");
-		this.compilerFortran = this.pipeline.acquireNode("compiler:fortran");
+		this.compilerC = this.pipeline.acquireNode(Phase.COMPILER, "c");
+		this.compilerCpp = this.pipeline.acquireNode(Phase.COMPILER, "cpp");
+		this.compilerObjC = this.pipeline.acquireNode(Phase.COMPILER, "objc");
+		this.compilerObjCpp = this.pipeline.acquireNode(Phase.COMPILER, "objcpp");
+		this.compilerFortran = this.pipeline.acquireNode(Phase.COMPILER, "fortran");
 
-		this.assemblerAssembly = this.pipeline.acquireNode("assembler:assembly");
+		this.assemblerAssembly = this.pipeline.acquireNode(Phase.ASSEMBLER, "assembly");
 
 		// C source code that must be preprocessed.
 		this.preprocessorC.registerResourceType(this.pipeline.acquireType("c"));
@@ -145,6 +152,15 @@ public class ReferenceScanner implements IReferenceScanner {
 	public boolean scan() {
 		this.log = SessionContextUtils.lookupSessionComponent(this.mvnSession, Log.class);
 		this.runtime = SessionContextUtils.lookupSessionComponent(this.mvnSession, ICompilerRuntime.class);
+		
+		File cDir = new File(this.runtime.getSourceDirectory(), "c");
+		if(cDir.exists()&&cDir.isDirectory()&&cDir.canRead()) {
+			for (File file : cDir.listFiles()) {
+				this.registry.acquireResource(file);
+			}
+		}
+		
+		
 
 		log.info("Scanner: Preprocessor  - Hello World!");
 		log.info("scanning src files: " + this.runtime.getSourceDirectory());
