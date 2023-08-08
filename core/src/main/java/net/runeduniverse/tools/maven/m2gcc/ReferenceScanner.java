@@ -11,9 +11,11 @@ import net.runeduniverse.tools.maven.compiler.api.ICompilerRuntime;
 import net.runeduniverse.tools.maven.compiler.api.IReferenceScanner;
 import net.runeduniverse.tools.maven.compiler.mojos.api.SessionContextUtils;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Node;
+import net.runeduniverse.tools.maven.compiler.pipeline.api.NodeContext;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Phase;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Pipeline;
-import net.runeduniverse.tools.maven.compiler.pipeline.api.ResourceRegistry;
+import net.runeduniverse.tools.maven.compiler.pipeline.api.Resource;
+import net.runeduniverse.tools.maven.compiler.pipeline.api.ResourceType;
 
 @Component(role = IReferenceScanner.class, hint = "m2gcc")
 public class ReferenceScanner implements IReferenceScanner {
@@ -34,9 +36,6 @@ public class ReferenceScanner implements IReferenceScanner {
 	@Requirement
 	private Pipeline pipeline;
 
-	@Requirement
-	private ResourceRegistry registry;
-	
 	private Node unsupported;
 	private Node preprocessorHeader;
 	private Node preprocessorC;
@@ -139,10 +138,9 @@ public class ReferenceScanner implements IReferenceScanner {
 		this.unsupported.registerResourceType(this.pipeline.acquireType("adb"));
 
 		// Assembler code.
-		this.preprocessorAssembler.registerResourceType(this.pipeline.acquireType("s"));
 		this.assemblerAssembly.registerResourceType(this.pipeline.acquireType("s"));
 		// Assembler code that must be preprocessed.
-		this.assemblerAssembly.registerResourceTypes(this.pipeline.acquireTypes("S", "sx"));
+		this.preprocessorAssembler.registerResourceTypes(this.pipeline.acquireTypes("S", "sx"));
 
 		/* RESULTS */
 		// precompiled header -> gch
@@ -152,15 +150,17 @@ public class ReferenceScanner implements IReferenceScanner {
 	public boolean scan() {
 		this.log = SessionContextUtils.lookupSessionComponent(this.mvnSession, Log.class);
 		this.runtime = SessionContextUtils.lookupSessionComponent(this.mvnSession, ICompilerRuntime.class);
-		
+
+		NodeContext conPreprocC = this.pipeline.getNodeContext(this.mvnSession, Phase.PREPROCESSOR, "c");
+		ResourceType resourceTypeC = this.pipeline.acquireType("c");
+
 		File cDir = new File(this.runtime.getSourceDirectory(), "c");
-		if(cDir.exists()&&cDir.isDirectory()&&cDir.canRead()) {
+		if (cDir.exists() && cDir.isDirectory() && cDir.canRead()) {
 			for (File file : cDir.listFiles()) {
-				this.registry.acquireResource(file);
+				Resource resource = this.pipeline.createResource(resourceTypeC);
+				conPreprocC.addResource(resource.setFile(file));
 			}
 		}
-		
-		
 
 		log.info("Scanner: Preprocessor  - Hello World!");
 		log.info("scanning src files: " + this.runtime.getSourceDirectory());
