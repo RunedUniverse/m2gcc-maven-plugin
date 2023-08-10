@@ -7,10 +7,7 @@ import org.codehaus.plexus.component.annotations.Component;
 
 import net.runeduniverse.tools.maven.compiler.api.ResourceScanner;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Node;
-import net.runeduniverse.tools.maven.compiler.pipeline.api.NodeContext;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Phase;
-import net.runeduniverse.tools.maven.compiler.pipeline.api.Resource;
-import net.runeduniverse.tools.maven.compiler.pipeline.api.ResourceType;
 
 @Component(role = ResourceScanner.class, hint = "m2gcc:c")
 public class CScanner extends Scanner implements ResourceScanner {
@@ -31,14 +28,14 @@ public class CScanner extends Scanner implements ResourceScanner {
 
 	@Override
 	protected boolean _scan() {
-		NodeContext conPreprocC = this.pipeline.getNodeContext(this.mvnSession, Phase.PREPROCESSOR, "c");
-		ResourceType resourceTypeC = this.pipeline.acquireType("c");
+		// NodeContext conPreprocC = this.pipeline.getNodeContext(this.mvnSession,
+		// Phase.PREPROCESSOR, "c");
+		// ResourceType resourceTypeC = this.pipeline.acquireType("c");
 
 		File cDir = new File(this.runtime.getSourceDirectory(), "c");
 		if (cDir.exists() && cDir.isDirectory() && cDir.canRead()) {
 			for (File file : cDir.listFiles()) {
-				Resource resource = this.pipeline.createResource(resourceTypeC);
-				conPreprocC.addResource(resource.setFile(file));
+				addResourceToInitialHandler(createResource(file));
 			}
 		}
 		return true;
