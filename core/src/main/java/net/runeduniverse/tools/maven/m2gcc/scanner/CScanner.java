@@ -1,6 +1,8 @@
 package net.runeduniverse.tools.maven.m2gcc.scanner;
 
 import java.io.File;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.component.annotations.Component;
@@ -32,9 +34,13 @@ public class CScanner extends Scanner implements ResourceScanner {
 		// Phase.PREPROCESSOR, "c");
 		// ResourceType resourceTypeC = this.pipeline.acquireType("c");
 
+		// TODO use JAVA.NIO.* to do that!
+		// Paths.* / Files.*
+
 		File cDir = new File(this.runtime.getSourceDirectory(), "c");
 		if (cDir.exists() && cDir.isDirectory() && cDir.canRead()) {
 			for (File file : cDir.listFiles()) {
+
 				addResourceToInitialHandler(createResource(file));
 			}
 		}
