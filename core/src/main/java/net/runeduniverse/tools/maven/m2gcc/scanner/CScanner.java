@@ -1,8 +1,10 @@
 package net.runeduniverse.tools.maven.m2gcc.scanner;
 
-import java.io.File;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.io.IOException;
+import java.nio.file.FileVisitOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.EnumSet;
 
 import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.component.annotations.Component;
@@ -10,6 +12,7 @@ import org.codehaus.plexus.component.annotations.Component;
 import net.runeduniverse.tools.maven.compiler.api.ResourceScanner;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Node;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Phase;
+import net.runeduniverse.tools.maven.compiler.pipeline.api.Resource;
 
 @Component(role = ResourceScanner.class, hint = "m2gcc:c")
 public class CScanner extends Scanner implements ResourceScanner {
@@ -30,19 +33,19 @@ public class CScanner extends Scanner implements ResourceScanner {
 
 	@Override
 	protected boolean _scan() {
-		// NodeContext conPreprocC = this.pipeline.getNodeContext(this.mvnSession,
-		// Phase.PREPROCESSOR, "c");
-		// ResourceType resourceTypeC = this.pipeline.acquireType("c");
+		Path cSources = this.runtime.getSourceDirectory()
+				.toPath()
+				.resolve("c");
+		ResourceCollector collector = new ResourceCollector(this.pipeline.getResourceIndex(this.mvnSession));
 
-		// TODO use JAVA.NIO.* to do that!
-		// Paths.* / Files.*
+		try {
+			Files.walkFileTree(cSources, EnumSet.of(FileVisitOption.FOLLOW_LINKS), Integer.MAX_VALUE, collector);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-		File cDir = new File(this.runtime.getSourceDirectory(), "c");
-		if (cDir.exists() && cDir.isDirectory() && cDir.canRead()) {
-			for (File file : cDir.listFiles()) {
-
-				addResourceToInitialHandler(createResource(file));
-			}
+		for (Resource resource : collector.getResources()) {
+			addResourceToInitialHandler(resource);
 		}
 		return true;
 	}

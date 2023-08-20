@@ -1,6 +1,5 @@
 package net.runeduniverse.tools.maven.m2gcc.scanner;
 
-import java.io.File;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -18,7 +17,7 @@ import net.runeduniverse.tools.maven.compiler.pipeline.api.ResourceType;
 
 public abstract class Scanner implements ResourceScanner {
 
-	protected final Set<ResourceType> registeredTypes = new LinkedHashSet<ResourceType>(0);
+	protected final Set<ResourceType> registeredTypes = new LinkedHashSet<>(0);
 
 	@Requirement
 	protected MavenSession mvnSession;
@@ -39,10 +38,6 @@ public abstract class Scanner implements ResourceScanner {
 		final Collection<ResourceType> types = this.pipeline.acquireTypes(suffixes);
 		this.registeredTypes.addAll(types);
 		return types;
-	}
-
-	protected Resource createResource(final File file) {
-		return this.pipeline.createResource(this.mvnSession, file);
 	}
 
 	protected void addResourceToInitialHandler(final Resource resource) {
