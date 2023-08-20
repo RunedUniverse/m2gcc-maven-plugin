@@ -1,4 +1,4 @@
-package net.runeduniverse.tools.maven.m2gcc.mojos.preprocessor;
+package net.runeduniverse.tools.maven.m2gcc.mojos.assembler;
 
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
@@ -13,14 +13,14 @@ import net.runeduniverse.tools.maven.compiler.pipeline.api.Pipeline;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Resource;
 
 /**
- * C Preprocessor from GCC
+ * C Assembler from GCC
  *
  * @author VenaNocta
  *
- * @phase preprocessor
- * @goal preprocess-c
+ * @phase assembler
+ * @goal assemble
  */
-public class PreprocessCMojo extends AbstractMojo {
+public class AssembleMojo extends AbstractMojo {
 
 	/**
 	 * @component
@@ -36,9 +36,9 @@ public class PreprocessCMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		final CompilerRuntime runtime = SessionContextUtils.lookupSessionComponent(this.mvnSession,
 				CompilerRuntime.class);
-		getLog().info("m2gcc-preprocessor:preprocess-c");
+		getLog().info("m2gcc-assembler:assemble");
 
-		NodeContext context = this.pipeline.getNodeContext(this.mvnSession, Phase.PREPROCESSOR, "c");
+		NodeContext context = this.pipeline.getNodeContext(this.mvnSession, Phase.ASSEMBLER, "assembly");
 		getLog().info("Resources:");
 		for (Resource resource : context.getResources()) {
 			getLog().info("  " + resource.getFile()

@@ -24,6 +24,7 @@ public class CppScanner extends Scanner implements ResourceScanner {
 	public void identifyNodes() {
 		this.preprocessorCpp = this.pipeline.acquireNode(Phase.PREPROCESSOR, "cpp");
 		this.compilerCpp = this.pipeline.acquireNode(Phase.COMPILER, "cpp");
+		this.pipeline.acquireNode(Phase.LINKER, "cpp");
 
 		// C++ source code that must be preprocessed. Note that in .cxx, the last two
 		// letters must both be literally x. Likewise, .C refers to a literal capital C.

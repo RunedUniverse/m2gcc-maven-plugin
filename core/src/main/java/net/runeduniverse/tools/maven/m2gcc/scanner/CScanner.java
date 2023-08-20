@@ -24,6 +24,7 @@ public class CScanner extends Scanner implements ResourceScanner {
 	public void identifyNodes() {
 		this.preprocessorC = this.pipeline.acquireNode(Phase.PREPROCESSOR, "c");
 		this.compilerC = this.pipeline.acquireNode(Phase.COMPILER, "c");
+		this.pipeline.acquireNode(Phase.LINKER, "c");
 
 		// C source code that must be preprocessed.
 		this.preprocessorC.registerResourceType(addType("c"));

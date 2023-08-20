@@ -24,6 +24,7 @@ public class ObjCppScanner extends Scanner implements ResourceScanner {
 	public void identifyNodes() {
 		this.preprocessorObjCpp = this.pipeline.acquireNode(Phase.PREPROCESSOR, "objcpp");
 		this.compilerObjCpp = this.pipeline.acquireNode(Phase.COMPILER, "objcpp");
+		this.pipeline.acquireNode(Phase.LINKER, "objcpp");
 
 		// Objective-C++ source code. Note that you must link with the libobjc library
 		// to make an Objective-C++ program work. Note that .M refers to a literal

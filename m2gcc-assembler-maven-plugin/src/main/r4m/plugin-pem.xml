@@ -40,15 +40,7 @@
 					<phases>
 						<phase id="assembler">
 							<goals>
-								<goal id="assemble-c">
-									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
-									<modes>
-										<default />
-										<dev />
-									</modes>
-								</goal>
-								<goal id="assemble-cpp">
+								<goal id="assemble">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
 									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
 									<modes>
@@ -69,15 +61,7 @@
 					<phases>
 						<phase id="assembler">
 							<goals>
-								<goal id="assemble-c">
-									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
-									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
-									<modes>
-										<default />
-										<dev />
-									</modes>
-								</goal>
-								<goal id="assemble-cpp">
+								<goal id="assemble">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
 									<artifactId>m2gcc-assembler-maven-plugin</artifactId>
 									<modes>

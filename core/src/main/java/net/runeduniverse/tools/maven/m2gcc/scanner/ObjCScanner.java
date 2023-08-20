@@ -24,6 +24,7 @@ public class ObjCScanner extends Scanner implements ResourceScanner {
 	public void identifyNodes() {
 		this.preprocessorObjC = this.pipeline.acquireNode(Phase.PREPROCESSOR, "objc");
 		this.compilerObjC = this.pipeline.acquireNode(Phase.COMPILER, "objc");
+		this.pipeline.acquireNode(Phase.LINKER, "objc");
 
 		// Objective-C source code. Note that you must link with the libobjc library to
 		// make an Objective-C program work.
