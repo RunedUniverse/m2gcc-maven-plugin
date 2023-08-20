@@ -1,19 +1,19 @@
 package net.runeduniverse.tools.maven.m2gcc.scanner;
 
-import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.component.annotations.Component;
 
-import net.runeduniverse.tools.maven.compiler.api.ResourceScanner;
+import net.runeduniverse.tools.maven.compiler.api.PipelineInitializer;
+import net.runeduniverse.tools.maven.compiler.mojos.api.AbstractInitializer;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Node;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Phase;
 
-@Component(role = ResourceScanner.class, hint = "m2gcc:header")
-public class HeaderScanner extends Scanner implements ResourceScanner {
+@Component(role = PipelineInitializer.class, hint = "m2gcc:header")
+public class HeaderScanner extends AbstractInitializer implements PipelineInitializer {
 
 	private Node preprocessorHeader;
 
 	@Override
-	public void identifyNodes() {
+	public void _initialize() {
 		this.preprocessorHeader = this.pipeline.acquireNode(Phase.PREPROCESSOR, "header");
 
 		// C, C++, Objective-C or Objective-C++ header file to be turned into a
@@ -24,16 +24,4 @@ public class HeaderScanner extends Scanner implements ResourceScanner {
 		this.preprocessorHeader.registerResourceTypes(addTypes("hh", "H", "hp", "hxx", "hpp", "HPP", "h++", "tcc"));
 
 	}
-
-	@Override
-	public boolean _scan() {
-		return true;
-	}
-
-	@Override
-	public boolean logAnalisis(Log log) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }
