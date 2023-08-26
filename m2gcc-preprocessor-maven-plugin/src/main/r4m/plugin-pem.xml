@@ -35,6 +35,11 @@
 			<triggers>
 				<default />
 			</triggers>
+			<restrictions>
+				<folder exists="true" read="true">
+					${project.build.sourceDirectory}/c/
+				</folder>
+			</restrictions>
 			<lifecycles>
 				<lifecycle id="compiler">
 					<phases>
@@ -48,6 +53,27 @@
 										<dev />
 									</modes>
 								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+			</lifecycles>
+		</execution>
+
+		<execution source="plugin" id="default">
+			<triggers>
+				<default />
+			</triggers>
+			<restrictions>
+				<folder exists="true" read="true">
+					${project.build.sourceDirectory}/cpp/
+				</folder>
+			</restrictions>
+			<lifecycles>
+				<lifecycle id="compiler">
+					<phases>
+						<phase id="preprocessor">
+							<goals>
 								<goal id="preprocess-cpp">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
 									<artifactId>m2gcc-preprocessor-maven-plugin</artifactId>
@@ -64,6 +90,11 @@
 		</execution>
 
 		<execution source="plugin" id="test">
+			<restrictions>
+				<folder exists="true" read="true">
+					${project.build.testSourceDirectory}/c/
+				</folder>
+			</restrictions>
 			<lifecycles>
 				<lifecycle id="compiler">
 					<phases>
@@ -77,6 +108,24 @@
 										<dev />
 									</modes>
 								</goal>
+							</goals>
+						</phase>
+					</phases>
+				</lifecycle>
+			</lifecycles>
+		</execution>
+
+		<execution source="plugin" id="test">
+			<restrictions>
+				<folder exists="true" read="true">
+					${project.build.testSourceDirectory}/cpp/
+				</folder>
+			</restrictions>
+			<lifecycles>
+				<lifecycle id="compiler">
+					<phases>
+						<phase id="preprocessor">
+							<goals>
 								<goal id="preprocess-cpp">
 									<groupId>net.runeduniverse.tools.maven.m2gcc</groupId>
 									<artifactId>m2gcc-preprocessor-maven-plugin</artifactId>
