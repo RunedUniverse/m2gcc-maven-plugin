@@ -36,7 +36,7 @@
 				<default />
 			</triggers>
 			<restrictions>
-				<folder exists="true" read="true">
+				<folder exists="true" readable="true">
 					${project.build.sourceDirectory}/c/
 				</folder>
 			</restrictions>
@@ -65,7 +65,7 @@
 				<default />
 			</triggers>
 			<restrictions>
-				<folder exists="true" read="true">
+				<folder exists="true" readable="true">
 					${project.build.sourceDirectory}/cpp/
 				</folder>
 			</restrictions>
@@ -91,7 +91,7 @@
 
 		<execution source="plugin" id="test">
 			<restrictions>
-				<folder exists="true" read="true">
+				<folder exists="true" readable="true">
 					${project.build.testSourceDirectory}/c/
 				</folder>
 			</restrictions>
@@ -117,7 +117,7 @@
 
 		<execution source="plugin" id="test">
 			<restrictions>
-				<folder exists="true" read="true">
+				<folder exists="true" readable="true">
 					${project.build.testSourceDirectory}/cpp/
 				</folder>
 			</restrictions>
