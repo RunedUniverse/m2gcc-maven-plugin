@@ -2,12 +2,14 @@ package net.runeduniverse.tools.maven.m2gcc.scanner;
 
 import org.codehaus.plexus.component.annotations.Component;
 
+import net.runeduniverse.tools.maven.compiler.api.CompilerRuntime;
 import net.runeduniverse.tools.maven.compiler.api.PipelineInitializer;
+import net.runeduniverse.tools.maven.compiler.api.ResourceScanner;
 import net.runeduniverse.tools.maven.compiler.mojos.api.AbstractInitializer;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Node;
 
 @Component(role = PipelineInitializer.class, hint = "m2gcc:unsupported")
-public class UnsupportedResourceScanner extends AbstractInitializer implements PipelineInitializer {
+public class UnsupportedResourceScanner extends AbstractInitializer implements PipelineInitializer, ResourceScanner {
 
 	// TODO - create pipeline in compiler-maven-extension
 	// TODO - add api to add nodes (filetypes: c,i,ii,...)
@@ -49,12 +51,12 @@ public class UnsupportedResourceScanner extends AbstractInitializer implements P
 	}
 
 	@Override
-	public boolean scan() {
+	public boolean scan(CompilerRuntime runtime) {
 		log.info("Scanner: Preprocessor  - Hello World!");
-		log.info("scanning src files: " + this.runtime.getSourceDirectory());
+		log.info("scanning src files: " + runtime.getSourceDirectory());
 
 		log.info("");
-		log.info("Pipeline: " + this.pipeline.toRecord());
+		log.info("Pipeline: " + pipeline.toRecord());
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -34,7 +34,7 @@ public class PreprocessCppMojo extends AbstractMojo {
 
 	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		final CompilerRuntime runtime = SessionContextUtils.lookupSessionComponent(this.mvnSession,
+		final CompilerRuntime runtime = SessionContextUtils.loadSessionComponent(this.mvnSession,
 				CompilerRuntime.class);
 		getLog().info("m2gcc-preprocessor:preprocess-cpp");
 
