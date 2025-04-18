@@ -91,9 +91,18 @@
 		<dependency>
 			<groupId>net.runeduniverse.tools.maven.r4m</groupId>
 			<artifactId>r4m-model-builder</artifactId>
-			<version>1.0.0</version>
+			<version>1.1.0</version>
 			<scope>provided</scope>
 			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.runeduniverse.lib.utils</groupId>
+			<artifactId>utils-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.runeduniverse.lib.utils</groupId>
+			<artifactId>utils-logging</artifactId>
 		</dependency>
 
 		<!-- dependency for plexus annotation -->

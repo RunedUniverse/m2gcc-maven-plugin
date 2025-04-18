@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -24,11 +26,11 @@
 		<!-- ARTIFACT VERSIONS -->
 		<maven-version>3.8.5</maven-version>
 		<!-- m2gcc-parent: maven-version-min -->
-		<runeduniverse-utils-common-version>1.0.1</runeduniverse-utils-common-version>
-		<runeduniverse-utils-logging-version>1.0.2</runeduniverse-utils-logging-version>
 		<runeduniverse-mvn-ext-compiler-version>0.0.0</runeduniverse-mvn-ext-compiler-version>
 		<plexus-component-version>1.7.1</plexus-component-version>
 		<!-- ARTIFACT VERSIONS - TESTING -->
+		<!-- ARTIFACT VERSIONS - BOMs -->
+		<runeduniverse-utils-bom-version>2.0.0</runeduniverse-utils-bom-version>
 	</properties>
 
 	<licenses>
@@ -82,13 +84,10 @@
 			<!-- UTILS -->
 			<dependency>
 				<groupId>net.runeduniverse.lib.utils</groupId>
-				<artifactId>utils-common</artifactId>
-				<version>${runeduniverse-utils-common-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.runeduniverse.lib.utils</groupId>
-				<artifactId>utils-logging</artifactId>
-				<version>${runeduniverse-utils-logging-version}</version>
+				<artifactId>utils-bom</artifactId>
+				<version>${runeduniverse-utils-bom-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 
 			<!-- dependency for plexus annotation -->

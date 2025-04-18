@@ -6,13 +6,13 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.toolchain.ToolchainManager;
 
+import net.runeduniverse.lib.utils.maven.SessionContextUtils;
 import net.runeduniverse.tools.maven.compiler.api.CompilerRuntime;
-import net.runeduniverse.tools.maven.compiler.mojos.api.SessionContextUtils;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.NodeContext;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Phase;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Pipeline;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Resource;
-import net.runeduniverse.tools.maven.m2gcc.connector.GccToolchainImpl;
+import net.runeduniverse.tools.maven.m2gcc.connector.DefaultGccToolchain;
 
 /**
  * C Preprocessor from GCC
@@ -52,7 +52,7 @@ public class PreprocessCMojo extends AbstractMojo {
 					.getName());
 		}
 
-		GccToolchainImpl toolchain = (GccToolchainImpl) this.toolchainManager.getToolchainFromBuildContext("gcc",
+		DefaultGccToolchain toolchain = (DefaultGccToolchain) this.toolchainManager.getToolchainFromBuildContext("gcc",
 				this.mvnSession);
 
 		if (toolchain == null) {

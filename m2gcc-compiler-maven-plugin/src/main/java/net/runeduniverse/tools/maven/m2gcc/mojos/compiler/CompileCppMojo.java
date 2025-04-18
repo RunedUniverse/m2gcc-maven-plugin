@@ -6,7 +6,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
 import net.runeduniverse.tools.maven.compiler.api.CompilerRuntime;
-import net.runeduniverse.tools.maven.compiler.mojos.api.SessionContextUtils;
+import net.runeduniverse.lib.utils.maven.SessionContextUtils;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.NodeContext;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Phase;
 import net.runeduniverse.tools.maven.compiler.pipeline.api.Pipeline;

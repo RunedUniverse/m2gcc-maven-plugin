@@ -35,7 +35,7 @@ public class GccToolchainFactory implements ToolchainFactory {
 		if (model == null)
 			return null;
 
-		GccToolchainImpl toolchain = new GccToolchainImpl(model, this.logger);
+		DefaultGccToolchain toolchain = new DefaultGccToolchain(model, this.logger);
 
 		// populate the provides section
 		Properties provides = model.getProvides();
@@ -60,7 +60,7 @@ public class GccToolchainFactory implements ToolchainFactory {
 
 		// populate the configuration section
 		Xpp3Dom dom = (Xpp3Dom) model.getConfiguration();
-		Xpp3Dom binaryPathDom = dom.getChild(GccToolchainImpl.KEY_BINARY_PATH);
+		Xpp3Dom binaryPathDom = dom.getChild(DefaultGccToolchain.KEY_BINARY_PATH);
 		if (binaryPathDom != null) {
 			Path binaryPath = Paths.get(binaryPathDom.getValue());
 			if (!Files.exists(binaryPath))
@@ -73,7 +73,7 @@ public class GccToolchainFactory implements ToolchainFactory {
 								.toString());
 			toolchain.setBinaryPath(binaryPathDom.getValue());
 		}
-		Xpp3Dom libraryPathDom = dom.getChild(GccToolchainImpl.KEY_LIBRARY_PATH);
+		Xpp3Dom libraryPathDom = dom.getChild(DefaultGccToolchain.KEY_LIBRARY_PATH);
 		if (libraryPathDom != null) {
 			Path libraryPath = Paths.get(libraryPathDom.getValue());
 			if (!Files.exists(libraryPath))
@@ -86,7 +86,7 @@ public class GccToolchainFactory implements ToolchainFactory {
 								.toString());
 			toolchain.setLibraryPath(libraryPathDom.getValue());
 		}
-		Xpp3Dom libraryExecutablePathDom = dom.getChild(GccToolchainImpl.KEY_LIBRARY_EXECUTABLE_PATH);
+		Xpp3Dom libraryExecutablePathDom = dom.getChild(DefaultGccToolchain.KEY_LIBRARY_EXECUTABLE_PATH);
 		if (libraryPathDom != null) {
 			Path libraryExecutablePath = Paths.get(libraryExecutablePathDom.getValue());
 			if (!Files.exists(libraryExecutablePath))

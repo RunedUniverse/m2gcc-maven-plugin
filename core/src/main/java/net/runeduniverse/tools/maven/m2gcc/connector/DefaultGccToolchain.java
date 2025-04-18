@@ -14,8 +14,9 @@ import org.apache.maven.toolchain.DefaultToolchain;
 import org.apache.maven.toolchain.model.ToolchainModel;
 import org.codehaus.plexus.logging.Logger;
 
-import net.runeduniverse.lib.utils.logging.logs.CompoundTree;
-import net.runeduniverse.lib.utils.logging.logs.Recordable;
+import net.runeduniverse.lib.utils.logging.log.DefaultCompoundTree;
+import net.runeduniverse.lib.utils.logging.log.api.CompoundTree;
+import net.runeduniverse.lib.utils.logging.log.api.Recordable;
 
 /**
  * Gcc toolchain implementation.
@@ -23,7 +24,7 @@ import net.runeduniverse.lib.utils.logging.logs.Recordable;
  * @author VenaNocta
  * @since 1.0.0
  */
-public class GccToolchainImpl extends DefaultToolchain implements Recordable {
+public class DefaultGccToolchain extends DefaultToolchain implements Recordable {
 
 	public static final String KEY_BINARY_PATH = "binPath";
 	public static final String KEY_LIBRARY_PATH = "libPath";
@@ -33,7 +34,7 @@ public class GccToolchainImpl extends DefaultToolchain implements Recordable {
 	private String libraryPath = null;
 	private String libraryExecutablePath = null;
 
-	protected GccToolchainImpl(ToolchainModel model, Logger logger) {
+	protected DefaultGccToolchain(ToolchainModel model, Logger logger) {
 		super(model, "gcc", logger);
 	}
 
@@ -119,7 +120,7 @@ public class GccToolchainImpl extends DefaultToolchain implements Recordable {
 
 	@Override
 	public CompoundTree toRecord() {
-		final CompoundTree tree = new CompoundTree("gcc toolchain");
+		final CompoundTree tree = new DefaultCompoundTree("gcc toolchain");
 		if (!isBlank(this.binaryPath))
 			tree.append("BINARY_PATH", this.binaryPath);
 		if (!isBlank(this.libraryPath))
